@@ -87,7 +87,7 @@ class MoviePresenter(private val view: MovieView) {
         call.enqueue(object : Callback<Movie> {
             override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
                 if (response.isSuccessful) {
-                    view.showMovie(response.body())
+                    response.body()?.let { view.showMovie(it) }
                     view.hideMovieLoading()
                 } else {
                     view.showMovieError(response.message())

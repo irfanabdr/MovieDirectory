@@ -36,4 +36,6 @@
     <string name="toolbar_fade">toolbar fade</string>
     <string name="favorite_button">Favorite Button</string>
     <string name="empty_query">Search query can\'t be empty</string>
+    <string name="minutes">Minutes</string>
+    <string name="unknown">Unknown</string>
 </resources>

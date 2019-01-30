@@ -36,4 +36,6 @@
     <string name="toolbar_fade">toolbar fade</string>
     <string name="favorite_button">Tombol Favorite</string>
     <string name="empty_query">Kata kunci pencarian tidak boleh kosong</string>
+    <string name="minutes">Menit</string>
+    <string name="unknown">Tidak diketahui</string>
 </resources>

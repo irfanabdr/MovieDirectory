@@ -7,6 +7,6 @@ interface MovieView {
     fun showMovieLoading()
     fun hideMovieLoading()
     fun showMovieError(message: String)
-    fun showMovies(data: MovieResponse?)
-    fun showMovie(data: Movie?)
+    fun showMovies(data: MovieResponse)
+    fun showMovie(data: Movie)
 }

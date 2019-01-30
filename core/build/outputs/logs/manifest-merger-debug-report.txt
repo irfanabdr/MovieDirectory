@@ -1,53 +1,53 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
+ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
 	package
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:2:5-48
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:2:5-48
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:1-12:12
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
-ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:4:5-67
+ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:4:5-67
 	android:name
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:4:22-64
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:4:22-64
 permission#com.widyatama.moviedirectory.core.READ_DATABASE
-ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:6:5-8:44
+ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:6:5-8:44
 	android:protectionLevel
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:8:9-41
 	android:name
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:7:9-71
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:7:9-71
 permission#com.widyatama.moviedirectory.core.WRITE_DATABASE
-ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:9:5-11:44
+ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:9:5-11:44
 	android:protectionLevel
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:11:9-41
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:11:9-41
 	android:name
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml:10:9-72
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml:10:9-72
 uses-sdk
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-		ADDED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
-		INJECTED from /Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/core/src/main/AndroidManifest.xml
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+		ADDED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml
+		INJECTED from /Users/dimassaputra/MEGA/AndroidSourceCode/Widyatama/MobileComputingI/MovieDirectory/core/src/main/AndroidManifest.xml

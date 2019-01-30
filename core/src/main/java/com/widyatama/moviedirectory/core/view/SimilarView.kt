@@ -7,5 +7,5 @@ interface SimilarView {
     fun hideSimilarLoading()
     fun showSimilarError(message: String)
     fun showSimilarNotFound()
-    fun showSimilarData(data: List<Similar>?)
+    fun showSimilarData(data: List<Similar>)
 }

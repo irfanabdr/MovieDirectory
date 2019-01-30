@@ -36,9 +36,9 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
 
 
     private var isFavorite: Boolean = false
-    private var movieId: Int? = null
-    private var movie: Movie? = null
-    private var favoritePresenter: FavoritePresenter? = null
+    private var movieId: Int = 0
+    private lateinit var movie: Movie
+    private lateinit var favoritePresenter: FavoritePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,14 +58,14 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
 
         detailActivityFavoriteButton.setOnClickListener {
             if (!isFavorite) {
-                if (favoritePresenter!!.addToFavorite(movie!!)) {
+                if (favoritePresenter.addToFavorite(movie)) {
                     isFavorite = true
                     setFavorite()
                 } else {
                     Toast.makeText(this@DetailMovieActivity, getString(R.string.message_fail_favorite), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                if (favoritePresenter!!.removeFromFavorite(movieId!!)) {
+                if (favoritePresenter.removeFromFavorite(movieId)) {
                     isFavorite = false
                     setFavorite()
                 } else {
@@ -74,7 +74,7 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
             }
         }
 
-        val fragment = SimilarFragment.newInstance(movieId!!)
+        val fragment = SimilarFragment.newInstance(movieId)
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.detailActivityFrameLayout, fragment)
         transaction.commit()
@@ -82,7 +82,7 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
 
     private fun favoriteState() {
         favoritePresenter = FavoritePresenter(this, this)
-        isFavorite = favoritePresenter!!.isFavorite(movieId!!)
+        isFavorite = favoritePresenter.isFavorite(movieId)
         setFavorite()
     }
 
@@ -108,38 +108,37 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
         toast(message)
     }
 
-    override fun showMovies(data: MovieResponse?) {}
+    override fun showMovies(data: MovieResponse) {}
 
     @SuppressLint("SetTextI18n", "SimpleDateFormat")
-    override fun showMovie(data: Movie?) {
+    override fun showMovie(data: Movie) {
         movie = data
 
-        detailActivityTextViewTitle.text = data!!.title
+        detailActivityTextViewTitle.text = data.title
         var dateFormat = SimpleDateFormat("yyyy-mm-dd")
         val date = dateFormat.parse(data.releaseDate)
         dateFormat = SimpleDateFormat("dd MMMM yyyy")
 
         detailActivityTextViewYear.text = dateFormat.format(date)
-        if (data.productionCompanies!!.isNotEmpty()) {
-            detailActivityTextViewProduction.text = data.productionCompanies!![0].name
-        } else {
-            detailActivityTextViewProduction.text = "Unknown"
-        }
-        detailActivityTextViewRating.text = data.voteAverage!!.toString()
+
+        detailActivityTextViewProduction.text = data.productionCompanies?.get(0)?.name ?: getString(R.string.unknown)
+
+        detailActivityTextViewRating.text = data.voteAverage.toString()
         detailActivityTextViewOverview.text = data.overview
-        detailActivityTextViewDuration.text = data.runtime!!.toString() + " Minutes"
+        detailActivityTextViewDuration.text = data.runtime.toString() + getString(R.string.minutes)
 
         Picasso.get().load(BuildConfig.IMAGE_BASE_URL + data.backdropPath).fit().centerCrop().into(detailActivityToolbarBackground)
         Picasso.get().load(BuildConfig.IMAGE_BASE_URL + data.posterPath).fit().centerCrop().into(detailActivityThumbnail)
 
-        for (i in 0 until data.spokenLanguages!!.size) {
+        for (i in 0 until (data.spokenLanguages?.size ?: 0)) {
             if (i == 0)
-                detailActivityTextViewLanguage.text = data.spokenLanguages!![i].name
+                detailActivityTextViewLanguage.text = data.spokenLanguages?.get(i)?.name ?: getString(R.string.unknown)
             else
-                detailActivityTextViewLanguage.text = detailActivityTextViewLanguage.text.toString() + ", " + data.spokenLanguages!![i].name
+                detailActivityTextViewLanguage.text = detailActivityTextViewLanguage.text.toString() + ", " + (data.spokenLanguages?.get(i)?.name
+                        ?: getString(R.string.unknown))
         }
 
-        for (i in 0 until data.genres!!.size) {
+        for (i in 0 until (data.genres?.size ?: 0)) {
             val category = TextView(this)
 
             val params = LinearLayout.LayoutParams(
@@ -154,12 +153,12 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
             category.setLines(1)
             category.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
             category.setPadding(10, 0, 10, 0)
-            category.text = data.genres!![i].name
+            category.text = data.genres?.get(i)?.name ?: getString(R.string.unknown)
             detailActivityLinearLayoutCategory.addView(category)
         }
 
         val videoPresenter = VideoPresenter(this, this)
-        videoPresenter.getVideo(movieId!!)
+        videoPresenter.getVideo(movieId)
     }
 
     override fun onAdded(message: String) {
@@ -172,15 +171,13 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
 
     override fun showFavoriteData(data: ArrayList<FavoriteMovie>) {}
 
-    override fun showVideoData(video: Video?) {
-        if (video != null) {
-            detailActivityPlayVideo.visibility = View.VISIBLE
-            detailActivityPlayVideo.setOnClickListener {
-                val url = BuildConfig.VIDEO_BASE_URL + video.key
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse(url)
-                startActivity(intent)
-            }
+    override fun showVideoData(video: Video) {
+        detailActivityPlayVideo.visibility = View.VISIBLE
+        detailActivityPlayVideo.setOnClickListener {
+            val url = BuildConfig.VIDEO_BASE_URL + video.key
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
         }
     }
 
