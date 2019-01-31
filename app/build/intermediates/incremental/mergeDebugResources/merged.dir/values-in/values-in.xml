@@ -51,6 +51,7 @@
     <string name="message_fail_add_favorite">Gagal menghapus favorit, coba lagi !</string>
     <string name="message_fail_favorite">Gagal menambahkan ke favorit, coba lagi !</string>
     <string name="message_similar_not_found">Tidak ditemukan film serupa</string>
+    <string name="minutes">Menit</string>
     <string name="now_playing">Sedang Diputar</string>
     <string name="overview">Sinopsis</string>
     <string name="play_video">Putar video</string>
@@ -64,6 +65,7 @@
     <string name="thumbnail_movie">Gambar Film</string>
     <string name="toolbar_background">Toolbar Background</string>
     <string name="toolbar_fade">toolbar fade</string>
+    <string name="unknown">Tidak diketahui</string>
     <string name="upcoming">Yang akan hadir</string>
     <string name="voting">(%d penilai)</string>
 </resources>

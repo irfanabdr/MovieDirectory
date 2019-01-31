@@ -607,6 +607,7 @@
     <string name="message_favorite_added">Added to Favorites</string>
     <string name="message_similar_not_found">Similar not found</string>
     <string name="message_video_not_found">Video not found</string>
+    <string name="minutes">Minutes</string>
     <string name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
     <string name="now_playing">Now Playing</string>
     <string name="overview">Overview</string>
@@ -626,6 +627,7 @@
     <string name="thumbnail_movie">Thumbnail Movie</string>
     <string name="toolbar_background">Toolbar Background</string>
     <string name="toolbar_fade">toolbar fade</string>
+    <string name="unknown">Unknown</string>
     <string name="upcoming">Upcoming</string>
     <string name="voting">(%d votes)</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

@@ -26,7 +26,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.widyatama.moviedirectory.activity.MainActivity"
@@ -54,10 +53,6 @@
             android:name="com.squareup.picasso.PicassoProvider"
             android:authorities="com.widyatama.moviedirectory.com.squareup.picasso"
             android:exported="false" />
-        <provider
-            android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="com.widyatama.moviedirectory.com.android.tools.ir.server.InstantRunContentProvider"
-            android:multiprocess="true" />
     </application>
 
 </manifest>

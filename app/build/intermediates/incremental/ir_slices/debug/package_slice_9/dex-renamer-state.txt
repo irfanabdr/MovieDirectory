@@ -1,4 +1,0 @@
-#Sat Jan 19 20:00:42 WIB 2019
-base.0=/Users/Irfan/AndroidStudioProjects/MobileComputing-1/MovieDirectory/app/build/intermediates/transforms/dexMerger/debug/9
-path.0=classes.dex
-renamed.0=classes.dex

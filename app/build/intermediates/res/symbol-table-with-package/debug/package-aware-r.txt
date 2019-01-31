@@ -1474,6 +1474,7 @@ string message_fail_favorite
 string message_favorite_added
 string message_similar_not_found
 string message_video_not_found
+string minutes
 string mtrl_chip_close_icon_content_description
 string now_playing
 string overview
@@ -1493,6 +1494,7 @@ string status_bar_notification_info_overflow
 string thumbnail_movie
 string toolbar_background
 string toolbar_fade
+string unknown
 string upcoming
 string voting
 style AlertDialog_AppCompat

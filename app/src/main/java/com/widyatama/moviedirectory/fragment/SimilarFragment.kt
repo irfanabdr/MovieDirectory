@@ -14,6 +14,7 @@ import com.widyatama.moviedirectory.adapter.recyler.SimilarListAdapter
 import com.widyatama.moviedirectory.core.model.similar.Similar
 import com.widyatama.moviedirectory.core.presenter.SimilarPresenter
 import com.widyatama.moviedirectory.core.view.SimilarView
+import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.toast
 import java.util.*
 
@@ -60,12 +61,10 @@ class SimilarFragment : Fragment(), SimilarView {
     }
 
     override fun showSimilarData(data: List<Similar>) {
-        if (data != null) {
-            val layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-            val adapter = SimilarListAdapter(context!!, data)
-            recyclerView?.layoutManager = layoutManager
-            recyclerView?.adapter = adapter
-        }
+        val layoutManager = LinearLayoutManager(ctx, LinearLayout.HORIZONTAL, false)
+        val adapter = SimilarListAdapter(context!!, data)
+        recyclerView?.layoutManager = layoutManager
+        recyclerView?.adapter = adapter
     }
 
     companion object {
