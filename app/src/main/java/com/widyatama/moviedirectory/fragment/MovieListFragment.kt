@@ -100,17 +100,15 @@ class MovieListFragment : Fragment(), MovieView, FavoriteView {
         }
     }
 
-    override fun showMovies(data: MovieResponse?) {
-        if (context != null) {
-            movies.clear()
-            movies.addAll(data?.results!!)
-            val movieListAdapter = MovieListAdapter(ctx, movies)
-            recyclerView?.layoutManager = LinearLayoutManager(ctx, LinearLayout.VERTICAL, false)
-            recyclerView?.adapter = movieListAdapter
-        }
+    override fun showMovies(data: MovieResponse) {
+        movies.clear()
+        movies.addAll(data.results!!)
+        val movieListAdapter = MovieListAdapter(ctx, movies)
+        recyclerView?.layoutManager = LinearLayoutManager(ctx, LinearLayout.VERTICAL, false)
+        recyclerView?.adapter = movieListAdapter
     }
 
-    override fun showMovie(data: Movie?) {}
+    override fun showMovie(data: Movie) {}
     override fun onAdded(message: String) {}
     override fun onDeleted(message: String) {}
 

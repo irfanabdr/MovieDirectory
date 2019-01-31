@@ -59,7 +59,7 @@ class SimilarFragment : Fragment(), SimilarView {
         toast(getString(R.string.message_similar_not_found))
     }
 
-    override fun showSimilarData(data: List<Similar>?) {
+    override fun showSimilarData(data: List<Similar>) {
         if (data != null) {
             val layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
             val adapter = SimilarListAdapter(context!!, data)
