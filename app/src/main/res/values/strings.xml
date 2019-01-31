@@ -38,4 +38,5 @@
     <string name="empty_query">Search query can\'t be empty</string>
     <string name="minutes">Minutes</string>
     <string name="unknown">Unknown</string>
+    <string name="no_movies_found">No movie(s) found</string>
 </resources>

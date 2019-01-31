@@ -23,7 +23,6 @@ import java.util.*
 
 class SearchActivity : AppCompatActivity(), MovieView {
 
-
     private lateinit var moviePresenter: MoviePresenter
     private lateinit var movies: MutableList<Result>
 
@@ -55,6 +54,9 @@ class SearchActivity : AppCompatActivity(), MovieView {
     }
 
     override fun showMovieLoading() {
+        if (searchActivityEmptyView.visibility == View.VISIBLE) {
+            searchActivityEmptyView.visibility = View.GONE
+        }
         searchActivityProgressBar.visibility = View.VISIBLE
         searchActivityRecyclerView.visibility = View.INVISIBLE
     }
@@ -70,9 +72,16 @@ class SearchActivity : AppCompatActivity(), MovieView {
 
     override fun showMovies(data: MovieResponse) {
         data.results?.let { movies.addAll(it) }
-        val movieListAdapter = MovieListAdapter(this, movies)
-        searchActivityRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        searchActivityRecyclerView.adapter = movieListAdapter
+        if (movies.size > 0) {
+            val movieListAdapter = MovieListAdapter(this, movies)
+            searchActivityRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+            searchActivityRecyclerView.adapter = movieListAdapter
+
+            searchActivityRecyclerView.visibility = View.VISIBLE
+        } else {
+            searchActivityRecyclerView.visibility = View.GONE
+            searchActivityEmptyView.visibility = View.VISIBLE
+        }
     }
 
     override fun showMovie(data: Movie) {}

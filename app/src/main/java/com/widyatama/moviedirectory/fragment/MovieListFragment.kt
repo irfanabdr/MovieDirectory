@@ -29,16 +29,16 @@ import java.util.*
 class MovieListFragment : Fragment(), MovieView, FavoriteView {
 
 
-    private var recyclerView: RecyclerView? = null
-    private var progressBar: ProgressBar? = null
-    private var swipeRefreshLayout: SwipeRefreshLayout? = null
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     private var movies: MutableList<Result> = ArrayList()
     private var favoriteMovies: ArrayList<FavoriteMovie>? = ArrayList()
 
     private var position: Int = 0
-    private var moviePresenter: MoviePresenter? = null
-    private var favoritePresenter: FavoritePresenter? = null
+    private lateinit var moviePresenter: MoviePresenter
+    private lateinit var favoritePresenter: FavoritePresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -50,7 +50,7 @@ class MovieListFragment : Fragment(), MovieView, FavoriteView {
         recyclerView = view.findViewById(R.id.movieFragmentRecyclerView)
         progressBar = view.findViewById(R.id.movieFragmentProgressBar)
         swipeRefreshLayout = view.findViewById(R.id.movieFragmentSwipeRefreshLayout)
-        swipeRefreshLayout?.setColorSchemeColors(
+        swipeRefreshLayout.setColorSchemeColors(
                 ContextCompat.getColor(ctx, R.color.colorAccent),
                 ContextCompat.getColor(ctx, R.color.colorPrimary),
                 ContextCompat.getColor(ctx, R.color.colorPrimaryDark))
@@ -61,51 +61,53 @@ class MovieListFragment : Fragment(), MovieView, FavoriteView {
         movies = ArrayList()
         favoriteMovies = ArrayList()
         when (position) {
-            0 -> moviePresenter?.getNowPlayingMovies(1)
-            1 -> moviePresenter?.getUpcomingMovies(1)
-            else -> favoritePresenter?.showFavoriteData()
+            0 -> moviePresenter.getNowPlayingMovies(1)
+            1 -> moviePresenter.getUpcomingMovies(1)
+            else -> favoritePresenter.showFavoriteData()
         }
 
-        swipeRefreshLayout!!.setOnRefreshListener {
+        swipeRefreshLayout.setOnRefreshListener {
             when (position) {
-                0 -> moviePresenter?.getNowPlayingMovies(1)
-                1 -> moviePresenter?.getUpcomingMovies(1)
-                else -> favoritePresenter?.showFavoriteData()
+                0 -> moviePresenter.getNowPlayingMovies(1)
+                1 -> moviePresenter.getUpcomingMovies(1)
+                else -> favoritePresenter.showFavoriteData()
             }
         }
     }
 
     override fun showMovieLoading() {
-        if (!swipeRefreshLayout!!.isRefreshing) {
-            progressBar?.visibility = View.VISIBLE
+        if (!swipeRefreshLayout.isRefreshing) {
+            progressBar.visibility = View.VISIBLE
         }
 
-        recyclerView?.visibility = View.INVISIBLE
+        recyclerView.visibility = View.INVISIBLE
     }
 
     override fun hideMovieLoading() {
-        recyclerView?.visibility = View.VISIBLE
+        recyclerView.visibility = View.VISIBLE
 
-        if (!swipeRefreshLayout!!.isRefreshing) {
-            progressBar?.visibility = View.INVISIBLE
+        if (!swipeRefreshLayout.isRefreshing) {
+            progressBar.visibility = View.INVISIBLE
         } else {
-            swipeRefreshLayout?.isRefreshing = false
+            swipeRefreshLayout.isRefreshing = false
         }
     }
 
     override fun showMovieError(message: String) {
         toast(message)
-        if (swipeRefreshLayout!!.isRefreshing) {
-            swipeRefreshLayout?.isRefreshing = false
+        if (swipeRefreshLayout.isRefreshing) {
+            swipeRefreshLayout.isRefreshing = false
         }
     }
 
     override fun showMovies(data: MovieResponse) {
-        movies.clear()
-        movies.addAll(data.results!!)
-        val movieListAdapter = MovieListAdapter(ctx, movies)
-        recyclerView?.layoutManager = LinearLayoutManager(ctx, LinearLayout.VERTICAL, false)
-        recyclerView?.adapter = movieListAdapter
+        if (context != null) {
+            movies.clear()
+            movies.addAll(data.results!!)
+            val movieListAdapter = MovieListAdapter(ctx, movies)
+            recyclerView.layoutManager = LinearLayoutManager(ctx, LinearLayout.VERTICAL, false)
+            recyclerView.adapter = movieListAdapter
+        }
     }
 
     override fun showMovie(data: Movie) {}
@@ -116,9 +118,9 @@ class MovieListFragment : Fragment(), MovieView, FavoriteView {
         favoriteMovies?.clear()
         favoriteMovies?.addAll(data)
         val favoriteAdapter = FavoriteListAdapter(ctx, favoriteMovies!!)
-        recyclerView?.layoutManager = LinearLayoutManager(ctx, LinearLayout.VERTICAL, false)
-        recyclerView?.adapter = favoriteAdapter
-        swipeRefreshLayout?.isRefreshing = false
+        recyclerView.layoutManager = LinearLayoutManager(ctx, LinearLayout.VERTICAL, false)
+        recyclerView.adapter = favoriteAdapter
+        swipeRefreshLayout.isRefreshing = false
     }
 
     companion object {

@@ -38,4 +38,5 @@
     <string name="empty_query">Kata kunci pencarian tidak boleh kosong</string>
     <string name="minutes">Menit</string>
     <string name="unknown">Tidak diketahui</string>
+    <string name="no_movies_found">Film tidak ditemukan</string>
 </resources>

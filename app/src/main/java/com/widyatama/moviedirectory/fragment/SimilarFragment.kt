@@ -23,8 +23,8 @@ import java.util.*
  */
 class SimilarFragment : Fragment(), SimilarView {
 
-    private var progressBar: ProgressBar? = null
-    private var recyclerView: RecyclerView? = null
+    private lateinit var progressBar: ProgressBar
+    private lateinit var recyclerView: RecyclerView
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -43,13 +43,13 @@ class SimilarFragment : Fragment(), SimilarView {
     }
 
     override fun showSimilarLoading() {
-        progressBar?.visibility = View.VISIBLE
-        recyclerView?.visibility = View.INVISIBLE
+        progressBar.visibility = View.VISIBLE
+        recyclerView.visibility = View.INVISIBLE
     }
 
     override fun hideSimilarLoading() {
-        progressBar?.visibility = View.INVISIBLE
-        recyclerView?.visibility = View.VISIBLE
+        progressBar.visibility = View.INVISIBLE
+        recyclerView.visibility = View.VISIBLE
     }
 
     override fun showSimilarError(message: String) {
@@ -62,9 +62,9 @@ class SimilarFragment : Fragment(), SimilarView {
 
     override fun showSimilarData(data: List<Similar>) {
         val layoutManager = LinearLayoutManager(ctx, LinearLayout.HORIZONTAL, false)
-        val adapter = SimilarListAdapter(context!!, data)
-        recyclerView?.layoutManager = layoutManager
-        recyclerView?.adapter = adapter
+        val adapter = SimilarListAdapter(ctx, data)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = adapter
     }
 
     companion object {
