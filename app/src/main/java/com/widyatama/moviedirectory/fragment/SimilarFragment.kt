@@ -61,10 +61,12 @@ class SimilarFragment : Fragment(), SimilarView {
     }
 
     override fun showSimilarData(data: List<Similar>) {
-        val layoutManager = LinearLayoutManager(ctx, LinearLayout.HORIZONTAL, false)
-        val adapter = SimilarListAdapter(ctx, data)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = adapter
+        if (context != null) {
+            val layoutManager = LinearLayoutManager(ctx, LinearLayout.HORIZONTAL, false)
+            val adapter = SimilarListAdapter(ctx, data)
+            recyclerView.layoutManager = layoutManager
+            recyclerView.adapter = adapter
+        }
     }
 
     companion object {
