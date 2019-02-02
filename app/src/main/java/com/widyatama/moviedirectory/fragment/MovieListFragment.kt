@@ -1,6 +1,7 @@
 package com.widyatama.moviedirectory.fragment
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v4.widget.SwipeRefreshLayout
@@ -16,7 +17,6 @@ import com.widyatama.moviedirectory.adapter.recyler.FavoriteListAdapter
 import com.widyatama.moviedirectory.adapter.recyler.MovieListAdapter
 import com.widyatama.moviedirectory.core.db.model.FavoriteMovie
 import com.widyatama.moviedirectory.core.model.movie.Movie
-import com.widyatama.moviedirectory.core.model.movie.MovieResponse
 import com.widyatama.moviedirectory.core.model.movie.Result
 import com.widyatama.moviedirectory.core.presenter.FavoritePresenter
 import com.widyatama.moviedirectory.core.presenter.MoviePresenter
@@ -24,10 +24,24 @@ import com.widyatama.moviedirectory.core.view.FavoriteView
 import com.widyatama.moviedirectory.core.view.MovieView
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.toast
-import java.util.*
 
 class MovieListFragment : Fragment(), MovieView, FavoriteView {
 
+    companion object {
+
+        const val POSITION = "position"
+        const val LIST_STATE_KEY = "list_state"
+
+        fun newInstance(position: Int): MovieListFragment {
+            val movieListFragment = MovieListFragment()
+
+            val args = Bundle()
+            args.putInt(POSITION, position)
+            movieListFragment.arguments = args
+
+            return movieListFragment
+        }
+    }
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
@@ -54,16 +68,21 @@ class MovieListFragment : Fragment(), MovieView, FavoriteView {
                 ContextCompat.getColor(ctx, R.color.colorAccent),
                 ContextCompat.getColor(ctx, R.color.colorPrimary),
                 ContextCompat.getColor(ctx, R.color.colorPrimaryDark))
-
         moviePresenter = MoviePresenter(this)
         favoritePresenter = FavoritePresenter(ctx, this)
-        position = if (arguments != null) arguments!!.getInt(POSITION, 0) else 0
-        movies = ArrayList()
-        favoriteMovies = ArrayList()
-        when (position) {
-            0 -> moviePresenter.getNowPlayingMovies(1)
-            1 -> moviePresenter.getUpcomingMovies(1)
-            else -> favoritePresenter.showFavoriteData()
+
+        if (savedInstanceState != null){
+            movies = savedInstanceState.getParcelableArrayList<Result>(LIST_STATE_KEY) as MutableList<Result>
+            showMovies(movies)
+        } else {
+            position = if (arguments != null) arguments!!.getInt(POSITION, 0) else 0
+            movies = ArrayList()
+            favoriteMovies = ArrayList()
+            when (position) {
+                0 -> moviePresenter.getNowPlayingMovies(1)
+                1 -> moviePresenter.getUpcomingMovies(1)
+                else -> favoritePresenter.showFavoriteData()
+            }
         }
 
         swipeRefreshLayout.setOnRefreshListener {
@@ -100,10 +119,9 @@ class MovieListFragment : Fragment(), MovieView, FavoriteView {
         }
     }
 
-    override fun showMovies(data: MovieResponse) {
+    override fun showMovies(data: List<Result>) {
         if (context != null) {
-            movies.clear()
-            movies.addAll(data.results!!)
+            movies = data as MutableList<Result>
             val movieListAdapter = MovieListAdapter(ctx, movies)
             recyclerView.layoutManager = LinearLayoutManager(ctx, LinearLayout.VERTICAL, false)
             recyclerView.adapter = movieListAdapter
@@ -123,18 +141,9 @@ class MovieListFragment : Fragment(), MovieView, FavoriteView {
         swipeRefreshLayout.isRefreshing = false
     }
 
-    companion object {
-
-        const val POSITION = "position"
-
-        fun newInstance(position: Int): MovieListFragment {
-            val movieListFragment = MovieListFragment()
-
-            val args = Bundle()
-            args.putInt(POSITION, position)
-            movieListFragment.arguments = args
-
-            return movieListFragment
-        }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        @Suppress("UNCHECKED_CAST")
+        outState.putParcelableArrayList(LIST_STATE_KEY, movies as ArrayList<out Parcelable>)
     }
 }

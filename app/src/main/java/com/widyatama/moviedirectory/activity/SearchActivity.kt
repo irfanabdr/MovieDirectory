@@ -13,7 +13,6 @@ import android.widget.Toast
 import com.widyatama.moviedirectory.R
 import com.widyatama.moviedirectory.adapter.recyler.MovieListAdapter
 import com.widyatama.moviedirectory.core.model.movie.Movie
-import com.widyatama.moviedirectory.core.model.movie.MovieResponse
 import com.widyatama.moviedirectory.core.model.movie.Result
 import com.widyatama.moviedirectory.core.presenter.MoviePresenter
 import com.widyatama.moviedirectory.core.view.MovieView
@@ -70,8 +69,8 @@ class SearchActivity : AppCompatActivity(), MovieView {
         toast(message)
     }
 
-    override fun showMovies(data: MovieResponse) {
-        data.results?.let { movies.addAll(it) }
+    override fun showMovies(data: List<Result>) {
+        data.let { movies.addAll(it) }
         if (movies.size > 0) {
             val movieListAdapter = MovieListAdapter(this, movies)
             searchActivityRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)

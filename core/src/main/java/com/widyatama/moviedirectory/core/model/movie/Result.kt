@@ -1,9 +1,11 @@
 package com.widyatama.moviedirectory.core.model.movie
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Result {
+class Result() : Parcelable {
 
     @SerializedName("vote_count")
     @Expose
@@ -26,5 +28,26 @@ class Result {
     @SerializedName("overview")
     @Expose
     val overview: String? = null
+
+    @Suppress("UNUSED_PARAMETER")
+    constructor(parcel: Parcel) : this()
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Result> {
+        override fun createFromParcel(parcel: Parcel): Result {
+            return Result(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Result?> {
+            return arrayOfNulls(size)
+        }
+    }
 
 }

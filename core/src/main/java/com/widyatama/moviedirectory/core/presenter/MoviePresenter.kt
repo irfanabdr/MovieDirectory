@@ -21,7 +21,7 @@ class MoviePresenter(private val view: MovieView) {
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
-                    response.body()?.let { view.showMovies(it) }
+                    response.body()?.let { it.results?.let { it1 -> view.showMovies(it1) } }
                     view.hideMovieLoading()
                 } else {
                     view.showMovieError(response.message())
@@ -43,7 +43,7 @@ class MoviePresenter(private val view: MovieView) {
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
-                    response.body()?.let { view.showMovies(it) }
+                    response.body()?.let { it.results?.let { it1 -> view.showMovies(it1) } }
                     view.hideMovieLoading()
                 } else {
                     view.showMovieError(response.message())
@@ -65,7 +65,7 @@ class MoviePresenter(private val view: MovieView) {
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
-                    response.body()?.let { view.showMovies(it) }
+                    response.body()?.let { it.results?.let { it1 -> view.showMovies(it1) } }
                     view.hideMovieLoading()
                 } else {
                     view.showMovieError(response.message())

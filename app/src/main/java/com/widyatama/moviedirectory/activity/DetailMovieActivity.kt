@@ -16,7 +16,7 @@ import com.widyatama.moviedirectory.BuildConfig
 import com.widyatama.moviedirectory.R
 import com.widyatama.moviedirectory.core.db.model.FavoriteMovie
 import com.widyatama.moviedirectory.core.model.movie.Movie
-import com.widyatama.moviedirectory.core.model.movie.MovieResponse
+import com.widyatama.moviedirectory.core.model.movie.Result
 import com.widyatama.moviedirectory.core.model.video.Video
 import com.widyatama.moviedirectory.core.presenter.FavoritePresenter
 import com.widyatama.moviedirectory.core.presenter.MoviePresenter
@@ -34,7 +34,6 @@ import java.util.*
 
 class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoView {
 
-
     private var isFavorite: Boolean = false
     private var movieId: Int = 0
     private lateinit var movie: Movie
@@ -51,6 +50,9 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
         detailActivityTextViewToolbar.text = movieTitle
         val presenter = MoviePresenter(this)
         presenter.getMovie(movieId)
+
+        val videoPresenter = VideoPresenter(this, this)
+        videoPresenter.getVideo(movieId)
 
         favoriteState()
 
@@ -108,7 +110,7 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
         toast(message)
     }
 
-    override fun showMovies(data: MovieResponse) {}
+    override fun showMovies(data: List<Result>) {}
 
     @SuppressLint("SetTextI18n", "SimpleDateFormat")
     override fun showMovie(data: Movie) {
@@ -156,9 +158,6 @@ class DetailMovieActivity : AppCompatActivity(), MovieView, FavoriteView, VideoV
             category.text = data.genres?.get(i)?.name ?: getString(R.string.unknown)
             detailActivityLinearLayoutCategory.addView(category)
         }
-
-        val videoPresenter = VideoPresenter(this, this)
-        videoPresenter.getVideo(movieId)
     }
 
     override fun onAdded(message: String) {
